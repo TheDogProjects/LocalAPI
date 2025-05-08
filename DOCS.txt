@@ -1,0 +1,5 @@
+http://127.0.0.1:5000/localapi/cmd/{cmd} [POST] - Execute A Cmd Command
+http://127.0.0.1:5000/localapi/log/{text} [POST] - Log A Message
+http://127.0.0.1:5000/localapi/log/{text} [POST] - Warn
+http://127.0.0.1:5000/localapi/err/{text} [POST] - Throw An Error
+http://127.0.0.1:5000/localapi/info/cpu/cores [GET] - Get CPU Cores
