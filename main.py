@@ -10,16 +10,16 @@ RULESACCEPT = True
 if RULESACCEPT == True:
 
     app = Flask(__name__)
-    CORS(app)  # Obsługa CORS
+    CORS(app)
 
-    @app.route('/localapi/cmd/<string:zmienna>', methods=['POST'])
-    def execute_command(zmienna):
-        if not zmienna:
-            return jsonify({"error": "Brak komendy"}), 400
+    @app.route('/localapi/cmd/<string:cmd>', methods=['POST'])
+    def execute_command(cmd):
+        if not cmd:
+            return jsonify({"error": "Add cmd Parameter"}), 400
 
         try:
-            os.system(zmienna)  # Wykonuje komendę w CMD
-            return jsonify({"message": f"Wykonano: {zmienna}"})
+            os.system(zmienna)
+            return jsonify({"message": f"Executed: {cmd}")
         except Exception as e:
             return jsonify({"error": str(e)}), 500
         
