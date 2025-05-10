@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>API Curl Fetch</title>
+    <script>
+        async function fetchData(endpoint, elementId) {
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.text();
+                document.getElementById(elementId).innerText = data;
+            } catch (error) {
+                document.getElementById(elementId).innerText = "Błąd pobierania danych";
+                console.error("Błąd:", error);
+            }
+        }
+
+        window.onload = () => {
+            fetchData("http://localhost:5000/localapi/info/cpu/name", "h1-1");
+            fetchData("http://localhost:5000/localapi/info/cpu/cores", "h1-2");
+        };
+    </script>
+</head>
+<body>
+    <h1 id="h1-1">Pobieranie danych...</h1>
+    <h1 id="h1-2">Pobieranie JSON...</h1>
+</body>
+</html>

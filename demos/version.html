@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>API Curl Fetch</title>
+    <script>
+        async function fetchData(endpoint, elementId) {
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.text();
+                document.getElementById(elementId).innerText = data;
+            } catch (error) {
+                document.getElementById(elementId).innerText = "Błąd pobierania danych";
+                console.error("Błąd:", error);
+            }
+        }
+
+        window.onload = () => {
+            fetchData("http://localhost:5000/localapi/info/os/name", "h1-1");
+            fetchData("http://localhost:5000/localapi/info/os/version", "h1-2"); // JQ nie działa w JS, ale zwróci czysty JSON
+        };
+    </script>
+</head>
+<body>
+    <h1 id="h1-1">Pobieranie Danych...</h1>
+    <h1 id="h1-2">Pobieranie Danych...</h1>
+</body>
+</html>
